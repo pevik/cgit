@@ -943,7 +943,34 @@ static void print_header(void)
 	if (ctx.repo) {
 		cgit_index_link("index", NULL, NULL, NULL, NULL, 0, 1);
 		html(" : ");
-		cgit_summary_link(ctx.repo->name, ctx.repo->name, NULL, NULL);
+
+		/*
+		 * NOTE: If repo.name and repo.url are different, we don't split link as
+		 * it wouldn't make sense to split the path.
+		 */
+		if (!strcmp(ctx.repo->name, ctx.repo->url)) {
+			char *name = ctx.repo->name;
+			char *start = name;
+			for (;;) {
+				char *delim = strchr(start, '/');
+				if (delim)
+					*delim = '\0';
+
+				char *url = cgit_repourl(name);
+				html_link_open(url, NULL, NULL);
+				free(url);
+				html_ntxt(strlen(start), start);
+				html_link_close();
+
+				if (!delim)
+					break;
+				*delim = '/';
+				html("/");
+				start = delim + 1;
+			}
+		} else
+			cgit_summary_link(ctx.repo->name, ctx.repo->name, NULL, NULL);
+
 		if (ctx.env.authenticated) {
 			html("</td><td class='form'>");
 			html("<form method='get'>\n");

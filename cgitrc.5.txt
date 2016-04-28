@@ -609,7 +609,9 @@ repo.source-filter::
 
 repo.url::
 	The relative url used to access the repository. This must be the first
-	setting specified for each repo. Default value: none.
+	setting specified for each repo. Unless repo.url is different from
+	repo.name, cgit splits the repository link in the top of repository
+	"summary" view. Default value: none.
 
 
 REPOSITORY-SPECIFIC CGITRC FILE
