@@ -242,7 +242,7 @@ static void print_commit(struct commit *commit, struct rev_info *revs)
 	show_commit_decorations(commit);
 	html("</td><td>");
 	cgit_open_filter(ctx.repo->email_filter, info->author_email, "log");
-	html_txt(info->author);
+	cgit_author_link(info->author);
 	cgit_close_filter(ctx.repo->email_filter);
 
 	if (revs->graph) {
