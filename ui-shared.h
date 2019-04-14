@@ -15,6 +15,7 @@ extern char *cgit_pageurl(const char *reponame, const char *pagename,
 
 extern void cgit_add_clone_urls(void (*fn)(const char *));
 
+extern void cgit_author_link(const char *name);
 extern void cgit_index_link(const char *name, const char *title,
 			    const char *class, const char *pattern, const char *sort, int ofs, int always_root);
 extern void cgit_summary_link(const char *name, const char *title,

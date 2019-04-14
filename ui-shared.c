@@ -327,6 +327,13 @@ static void reporevlink(const char *page, const char *name, const char *title,
 	html("</a>");
 }
 
+void cgit_author_link(const char *name)
+{
+	cgit_log_link(name, NULL, NULL, NULL,
+		      NULL, NULL, 0, "author", name,
+		      0, 0);
+}
+
 void cgit_summary_link(const char *name, const char *title, const char *class,
 		       const char *head)
 {
