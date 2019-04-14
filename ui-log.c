@@ -515,7 +515,9 @@ void cgit_print_log(const char *tip, int ofs, int cnt, char *grep, char *pattern
 		commit->parents = NULL;
 	}
 	if (pager) {
-		html("</table><ul class='pager'>");
+		html("</table>");
+		htmlf("<div id='count'>Displayed items: %d</div>", i);
+		html("<ul class='pager'>");
 		if (ofs > 0) {
 			html("<li>");
 			cgit_log_link("[prev]", NULL, NULL, ctx.qry.head,

@@ -893,3 +893,8 @@ div#cgit table.ssdiff td.space {
 div#cgit table.ssdiff td.space div {
 	min-height: 3em;
 }
+div#cgit div#count {
+	font-size: 90%;
+	padding-top: 10px;
+	padding-left: 6px;
+}
